@@ -23,7 +23,7 @@
   - *Layer-wise Relevance Propagation (LRP)*
   - *Intersection Saliency Maps*
 - **⚡ Lightning Fast API**: Backend powered by `FastAPI` and `Uvicorn`, capable of handling asynchronous image processing.
-- **🎨 Beautiful UI**: A highly responsive, glassmorphic frontend built with React, Vite, and Tailwind CSS.
+- **🎨 Minimal UI**: A responsive, glassmorphic frontend built with React, Vite, and Tailwind CSS.
 - **📊 Real-time Confidence Dashboards**: Visualizes model predictions and XAI heatmaps dynamically.
 
 ---
@@ -100,5 +100,5 @@ MyFER/
 ---
 
 <div align="center">
-  <i>Built with ❤️ for deep learning and transparency.</i>
+  <i>Built with passion for deep learning and transparency.</i>
 </div>
