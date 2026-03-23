@@ -1,0 +1,35 @@
+# General OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs
+.vscode/
+.idea/
+pyrightconfig.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Backend
+backend/venv/
+backend/.env
+backend/weights/
+backend/.pytest_cache/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env
+frontend/.env.*
+frontend/.eslintcache
+
+# Project Specifics
+Dataset/
+Models/
+Error Logs.txt
+FER_WebApp_Development_Prompt.md

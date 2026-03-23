@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-gray-200 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .electric-border {
+    @apply border border-dark-accent rounded-xl shadow-[0_0_15px_rgba(0,209,255,0.15)];
+  }
+  
+  .glass-card {
+    @apply bg-dark-card border border-dark-border rounded-xl shadow-lg;
+  }
+}

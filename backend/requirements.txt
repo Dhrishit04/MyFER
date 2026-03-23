@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+torch
+torchvision
+pillow
+numpy
+matplotlib
+opencv-python-headless
+python-multipart
+python-dotenv
