@@ -30,11 +30,11 @@ MODELS = {
         "description": "Deep ResNet50 architecture trained on RAF-DB",
         "emotion_classes": ["Surprise", "Fear", "Disgust", "Happy", "Sad", "Angry", "Neutral"]
     },
-    "resnet18_untrained": {
-        "id": "resnet18_untrained",
+    "resnet18_v1": {
+        "id": "resnet18_v1",
         "instance": None,
         "class": ResNet18Model,
-        "weights_path": "./weights/empty.pth",
+        "weights_path": "./weights/resnet18_v1.pth",
         "name": "ResNet18 Model",
         "description": "Standard ResNet18 architecture",
         "emotion_classes": ["Surprise", "Fear", "Disgust", "Happy", "Sad", "Angry", "Neutral"]
