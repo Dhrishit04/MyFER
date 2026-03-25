@@ -8,7 +8,7 @@ MODELS = {
         "instance": None,
         "class": CBAMModel,
         "weights_path": "./weights/cbam_v1.pth",
-        "name": "CBAM Model (v1)",
+        "name": "CBAM Model",
         "description": "ResNet18 CBAM-based CNN trained on FER2013/RAF-DB dataset",
         "emotion_classes": ["Surprise", "Fear", "Disgust", "Happy", "Sad", "Angry", "Neutral"]
     },

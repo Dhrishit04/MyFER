@@ -17,14 +17,33 @@
 
 ## ✨ Features
 
-- **🧠 Advanced Deep Learning**: Utilizes the **CBAM** (Convolutional Block Attention Module) architecture for highly accurate emotion classification.
+- **🧠 Multi-Model Architecture**: Supports **four** deep learning models out of the box, selectable dynamically from the UI:
+  - **CBAM** — ResNet18 with Convolutional Block Attention Module
+  - **VGG16** — Classic VGG16 architecture
+  - **ResNet50** — Deep 50-layer Residual Network
+  - **ResNet18** — Lightweight 18-layer Residual Network
 - **🔍 Explainable AI (XAI)**: Demystifies black-box models using state-of-the-art interpretability techniques:
   - *Integrated Gradients*
   - *Layer-wise Relevance Propagation (LRP)*
   - *Intersection Saliency Maps*
+- **👤 Automatic Face Detection**: Uses OpenCV's Haar Cascade to detect and crop faces from uploaded images before inference.
 - **⚡ Lightning Fast API**: Backend powered by `FastAPI` and `Uvicorn`, capable of handling asynchronous image processing.
-- **🎨 Minimal UI**: A responsive, glassmorphic frontend built with React, Vite, and Tailwind CSS.
-- **📊 Real-time Confidence Dashboards**: Visualizes model predictions and XAI heatmaps dynamically.
+- **🎨 Minimal UI**: A responsive, glassmorphic frontend built with React and Vite.
+- **📊 Real-time Confidence Dashboards**: Visualizes model predictions, XAI heatmaps, and bounding boxes dynamically.
+- **🔌 Plug-and-Play Models**: Adding a new model is as simple as creating a PyTorch wrapper and registering it in the model registry — the frontend automatically picks it up.
+
+---
+
+## 🧪 Supported Models
+
+All models are trained on the **RAF-DB** dataset with 7 emotion classes: *Surprise, Fear, Disgust, Happy, Sad, Angry, Neutral*.
+
+| Model | Architecture | Test Accuracy | Status |
+| :--- | :--- | :---: | :---: |
+| **CBAM** | ResNet18 + CBAM | ~83% | ✅ Trained |
+| **VGG16** | VGG16 | ~83% | ✅ Trained |
+| **ResNet50** | ResNet50 | ~85% | ✅ Trained |
+| **ResNet18** | ResNet18 | ~84% | ✅ Trained |
 
 ---
 
@@ -32,9 +51,9 @@
 
 | Architecture / Tool | Technologies Used |
 | :--- | :--- |
-| **Frontend** | React, Vite, Tailwind CSS, Recharts |
+| **Frontend** | React, Vite, Vanilla CSS, Recharts, Lucide Icons |
 | **Backend API** | FastAPI, Uvicorn, Pydantic, Python-Multipart |
-| **Machine Learning** | PyTorch, Torchvision, OpenCV, NumPy |
+| **Machine Learning** | PyTorch, Torchvision, OpenCV, NumPy, Pillow |
 | **Environment** | Python 3.11, Node.js |
 
 ---
@@ -84,18 +103,32 @@ npm run dev
 ```text
 MyFER/
 ├── backend/                  # FastAPI Application
-│   ├── explainability/       # XAI logic (LRP, Integrated Gradients)
-│   ├── models/               # PyTorch Model architectures (CBAM)
+│   ├── explainability/       # XAI logic (LRP, Integrated Gradients, Intersection)
+│   ├── models/               # PyTorch model wrappers (CBAM, VGG16, ResNet18, ResNet50)
+│   │   ├── base_model.py     # Abstract base class for all FER models
+│   │   ├── cbam_model.py     # CBAM attention-based model
+│   │   ├── vgg16_model.py    # VGG16 model
+│   │   ├── resnet_models.py  # ResNet18 & ResNet50 models
+│   │   └── model_registry.py # Central model registry (plug-and-play)
 │   ├── utils/                # Image processing & tensor transformations
-│   ├── weights/              # Pretrained `.pth` models
+│   ├── weights/              # Pretrained .pth model weights
 │   └── main.py               # API Entrypoint
 ├── frontend/                 # React Application
 │   ├── src/                  # Components, Pages, and API services
-│   ├── public/               # Static assets
-│   └── tailwind.config.js    # Styling configuration
-├── Dataset/                  # Training Datasets (Ignored in Git)
+│   └── public/               # Static assets
+├── Models/                   # Training notebooks (.ipynb) & raw weights
 └── README.md
 ```
+
+---
+
+## 🔌 Adding a New Model
+
+1. Create a new PyTorch wrapper in `backend/models/` inheriting from `BaseFERModel` and `nn.Module`.
+2. Implement `__init__`, `forward`, and `load_weights` methods.
+3. Add an entry to the `MODELS` dictionary in `backend/models/model_registry.py`.
+4. Place the trained `.pth` weights in `backend/weights/`.
+5. Restart the server — the new model automatically appears in the frontend dropdown!
 
 ---
 
